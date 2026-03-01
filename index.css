@@ -1,0 +1,203 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Bricolage Grotesque - Display font */
+@font-face {
+  font-family: "Bricolage Grotesque";
+  src: url("/assets/fonts/BricolageGrotesque-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Plus Jakarta Sans - Body font */
+@font-face {
+  font-family: "Plus Jakarta Sans";
+  src: url("/assets/fonts/PlusJakartaSans-Variable.woff2") format("woff2");
+  font-weight: 200 800;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* Geist Mono - Code/Mono font */
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono-Variable.woff2") format("woff2");
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Medical teal + deep navy palette */
+    /* Background: very light warm white */
+    --background: 0.985 0.004 240;
+    /* Foreground: deep navy */
+    --foreground: 0.18 0.04 255;
+    /* Card: crisp white */
+    --card: 1 0 0;
+    --card-foreground: 0.18 0.04 255;
+    /* Popover */
+    --popover: 1 0 0;
+    --popover-foreground: 0.18 0.04 255;
+    /* Primary: deep teal */
+    --primary: 0.46 0.12 198;
+    --primary-foreground: 0.99 0 0;
+    /* Secondary: pale teal */
+    --secondary: 0.94 0.03 198;
+    --secondary-foreground: 0.3 0.08 198;
+    /* Muted: very light gray with teal tint */
+    --muted: 0.95 0.01 230;
+    --muted-foreground: 0.5 0.03 230;
+    /* Accent: vivid teal highlight */
+    --accent: 0.88 0.06 198;
+    --accent-foreground: 0.25 0.1 198;
+    /* Destructive */
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    /* Border */
+    --border: 0.9 0.02 230;
+    --input: 0.9 0.02 230;
+    --ring: 0.46 0.12 198;
+
+    /* Charts */
+    --chart-1: 0.55 0.18 198;
+    --chart-2: 0.6 0.15 160;
+    --chart-3: 0.7 0.12 120;
+    --chart-4: 0.65 0.18 30;
+    --chart-5: 0.7 0.15 290;
+
+    /* Sidebar */
+    --sidebar: 0.18 0.04 255;
+    --sidebar-foreground: 0.98 0.01 255;
+    --sidebar-primary: 0.65 0.18 198;
+    --sidebar-primary-foreground: 0.99 0 0;
+    --sidebar-accent: 0.25 0.06 255;
+    --sidebar-accent-foreground: 0.85 0.04 198;
+    --sidebar-border: 0.28 0.05 255;
+    --sidebar-ring: 0.5 0.14 198;
+
+    /* Custom medical tokens */
+    --medical-teal: 0.55 0.18 198;
+    --medical-navy: 0.18 0.06 255;
+    --medical-mint: 0.88 0.08 165;
+    --medical-coral: 0.68 0.19 30;
+    --medical-gold: 0.78 0.16 80;
+    --medical-success: 0.6 0.16 160;
+    --medical-warn: 0.75 0.15 80;
+    --score-gradient-start: 0.55 0.18 198;
+    --score-gradient-end: 0.65 0.2 160;
+  }
+
+  .dark {
+    --background: 0.13 0.03 255;
+    --foreground: 0.96 0.01 255;
+    --card: 0.18 0.04 255;
+    --card-foreground: 0.96 0.01 255;
+    --popover: 0.22 0.05 255;
+    --popover-foreground: 0.96 0.01 255;
+    --primary: 0.65 0.18 198;
+    --primary-foreground: 0.12 0.04 255;
+    --secondary: 0.24 0.05 255;
+    --secondary-foreground: 0.85 0.04 198;
+    --muted: 0.22 0.04 255;
+    --muted-foreground: 0.65 0.03 240;
+    --accent: 0.28 0.06 255;
+    --accent-foreground: 0.85 0.1 198;
+    --destructive: 0.65 0.22 25;
+    --destructive-foreground: 0.98 0 0;
+    --border: 0.26 0.05 255;
+    --input: 0.26 0.05 255;
+    --ring: 0.6 0.16 198;
+    --chart-1: 0.65 0.18 198;
+    --chart-2: 0.65 0.18 160;
+    --chart-3: 0.7 0.15 120;
+    --chart-4: 0.7 0.2 30;
+    --chart-5: 0.7 0.15 290;
+    --sidebar: 0.12 0.04 255;
+    --sidebar-foreground: 0.96 0.01 255;
+    --sidebar-primary: 0.65 0.18 198;
+    --sidebar-primary-foreground: 0.12 0.04 255;
+    --sidebar-accent: 0.2 0.05 255;
+    --sidebar-accent-foreground: 0.85 0.08 198;
+    --sidebar-border: 0.22 0.05 255;
+    --sidebar-ring: 0.55 0.14 198;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body;
+    font-feature-settings: "rlig" 1, "calt" 1;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+@layer utilities {
+  .font-display {
+    font-family: "Bricolage Grotesque", sans-serif;
+  }
+
+  .font-body {
+    font-family: "Plus Jakarta Sans", sans-serif;
+  }
+
+  .font-mono {
+    font-family: "Geist Mono", monospace;
+  }
+
+  /* Score circle utilities */
+  .score-ring {
+    stroke-linecap: round;
+    transform-origin: center;
+    transform: rotate(-90deg);
+    transition: stroke-dashoffset 1s ease-in-out;
+  }
+
+  /* Medical gradient text */
+  .gradient-text-medical {
+    background: linear-gradient(135deg, oklch(0.46 0.12 198), oklch(0.6 0.16 160));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Glass card effect */
+  .glass-card {
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    background: oklch(1 0 0 / 0.85);
+    border: 1px solid oklch(0.9 0.02 230);
+  }
+
+  /* Specialty color coding */
+  .specialty-oncology { background: oklch(0.9 0.08 15); color: oklch(0.4 0.15 15); }
+  .specialty-cardiology { background: oklch(0.92 0.07 8); color: oklch(0.42 0.17 8); }
+  .specialty-neurology { background: oklch(0.92 0.06 280); color: oklch(0.38 0.14 280); }
+  .specialty-endocrinology { background: oklch(0.9 0.08 60); color: oklch(0.4 0.15 60); }
+  .specialty-orthopedics { background: oklch(0.9 0.07 200); color: oklch(0.4 0.14 200); }
+  .specialty-dermatology { background: oklch(0.92 0.07 340); color: oklch(0.42 0.15 340); }
+  .specialty-pulmonology { background: oklch(0.9 0.08 160); color: oklch(0.4 0.16 160); }
+  .specialty-gastroenterology { background: oklch(0.9 0.07 120); color: oklch(0.4 0.14 120); }
+
+  /* Noise texture overlay */
+  .noise-overlay::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.03'/%3E%3C/svg%3E");
+    pointer-events: none;
+    border-radius: inherit;
+  }
+}
